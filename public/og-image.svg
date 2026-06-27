@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7ce8f7" />
+      <stop offset="1" stop-color="#0e8aa8" />
+    </linearGradient>
+    <radialGradient id="glow" cx="78%" cy="35%" r="55%">
+      <stop offset="0" stop-color="#2dd4ee" stop-opacity="0.28" />
+      <stop offset="1" stop-color="#2dd4ee" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#2dd4ee" stroke-opacity="0.06" stroke-width="1" />
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="#070b12" />
+  <rect width="1200" height="630" fill="url(#grid)" />
+  <rect width="1200" height="630" fill="url(#glow)" />
+
+  <!-- EK badge -->
+  <rect x="80" y="80" width="92" height="92" rx="22" fill="#0d1726" stroke="url(#accent)" stroke-width="3" />
+  <text x="126" y="128" text-anchor="middle" dominant-baseline="central"
+    font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="40" font-weight="700"
+    fill="url(#accent)" letter-spacing="-1">EK</text>
+
+  <!-- Name + title -->
+  <text x="80" y="330" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="92" font-weight="700" fill="#e8eff8" letter-spacing="-2">Emmanuel Kurinaah</text>
+  <text x="82" y="406" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="40" font-weight="500" fill="#93a1b5">Associate Software Engineer</text>
+
+  <!-- Tagline pills -->
+  <g font-family="'Courier New', monospace" font-size="28" font-weight="700" fill="url(#accent)">
+    <text x="82" y="492">Fullstack</text>
+    <text x="300" y="492" fill="#51607a">·</text>
+    <text x="330" y="492">Cloud</text>
+    <text x="470" y="492" fill="#51607a">·</text>
+    <text x="500" y="492">Applied AI</text>
+  </g>
+
+  <rect x="80" y="540" width="1040" height="2" fill="#1b2a3d" />
+  <text x="80" y="586" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="26" fill="#5d6b80">github.com/manny239   ·   linkedin.com/in/emmakurinaah</text>
+</svg>

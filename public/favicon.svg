@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="ek" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7ce8f7" />
+      <stop offset="0.5" stop-color="#2dd4ee" />
+      <stop offset="1" stop-color="#0e8aa8" />
+    </linearGradient>
+  </defs>
+  <rect x="3" y="3" width="58" height="58" rx="16" fill="#070b12" stroke="url(#ek)" stroke-width="3" />
+  <text x="32" y="34" text-anchor="middle" dominant-baseline="central"
+    font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="27" font-weight="700"
+    fill="url(#ek)" letter-spacing="-1">EK</text>
+</svg>
