@@ -392,7 +392,7 @@ export const projects: Project[] = [
         'Developed a local seed React SPA portfolio skeleton designed for fast customization per request.',
         'Integrated a GitHub Actions pipeline with AWS-hosted resources to provision new infrastructure and push updates automatically.',
       ],
-      impact: [
+    impact: [
         'Turned bespoke portfolio builds into a repeatable, automation-driven workflow.',
         'This site is the latest build to descend from that skeleton.',
       ],
