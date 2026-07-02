@@ -178,6 +178,7 @@ export function Contact() {
                       type="text"
                       name="name"
                       required
+                      maxLength={100}
                       placeholder="Your name"
                       className={inputClasses}
                     />
@@ -188,6 +189,7 @@ export function Contact() {
                       type="email"
                       name="email"
                       required
+                      maxLength={200}
                       placeholder="you@example.com"
                       className={inputClasses}
                     />
@@ -200,6 +202,7 @@ export function Contact() {
                     name="message"
                     required
                     rows={5}
+                    maxLength={5000}
                     placeholder="Tell me about the role or project…"
                     className={`${inputClasses} resize-y`}
                   />

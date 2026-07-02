@@ -62,6 +62,21 @@ Colors and fonts are defined once as CSS variables in `src/index.css`:
 Change the accent by editing `--accent` (and `--accent-strong`, `--glow`) in
 both blocks.
 
+## Security headers
+
+`vercel.json` sends a strict Content-Security-Policy. The inline theme script
+in `index.html` is allow-listed by **hash** — if you ever edit that script,
+recompute the hash and update the CSP, or the theme preference will silently
+stop applying (the site falls back to dark):
+
+```bash
+python3 -c "
+import re, hashlib, base64
+s = re.findall(r'<script>(.*?)</script>', open('dist/index.html').read(), re.S)[0]
+print('sha256-' + base64.b64encode(hashlib.sha256(s.encode()).digest()).decode())
+"
+```
+
 ## Deployment
 
 It's a static SPA — `npm run build` outputs `dist/`. Host options:
