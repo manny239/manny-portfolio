@@ -10,12 +10,18 @@ import { SectionHeading } from './ui/SectionHeading'
 import { SocialLinks } from './ui/SocialLinks'
 
 /**
- * To deliver messages to your inbox, create a free form at https://formspree.io
- * (target: emkurinaah@gmail.com) and paste its form ID below (e.g. "xeoyabcd").
- * Until then, the form gracefully falls back to opening the visitor's email client.
+ * Contact form delivery via Web3Forms (https://web3forms.com).
+ * Create a free access key (no account needed) targeting emkurinaah@gmail.com,
+ * then paste it below. Web3Forms emails each submission to that address and sets
+ * the Reply-To header to the visitor's email, so hitting Reply in Gmail goes
+ * straight back to them. Until a key is set, the form falls back to the visitor's
+ * mail client.
+ *
+ * The access key is public by design (it ships in client-side code); it only
+ * permits sending mail to the address configured on the Web3Forms account.
  */
-const FORMSPREE_FORM_ID = ''
-const ENDPOINT = FORMSPREE_FORM_ID ? `https://formspree.io/f/${FORMSPREE_FORM_ID}` : null
+const WEB3FORMS_ACCESS_KEY = '1243ace3-bda5-4137-aae9-e1abaac7e172'
+const ENDPOINT = 'https://api.web3forms.com/submit'
 
 type Status = 'idle' | 'submitting' | 'success' | 'error'
 
@@ -41,9 +47,10 @@ export function Contact() {
     const form = e.currentTarget
     const formData = new FormData(form)
 
-    // No Formspree configured yet → fall back to the visitor's mail client.
-    if (!ENDPOINT) {
-      const name = String(formData.get('name') ?? '')
+    const name = String(formData.get('name') ?? '')
+
+    // No delivery key configured yet → fall back to the visitor's mail client.
+    if (!WEB3FORMS_ACCESS_KEY) {
       const email = String(formData.get('email') ?? '')
       const message = String(formData.get('message') ?? '')
       const subject = encodeURIComponent(`Portfolio inquiry from ${name}`)
@@ -52,14 +59,29 @@ export function Contact() {
       return
     }
 
+    // Web3Forms delivers to the account address; Reply-To is auto-set to the
+    // visitor's "email" field, so a Gmail reply goes straight back to them.
+    // Sent as JSON (not multipart) so the API answers with CORS headers + JSON
+    // instead of redirecting to a success page.
+    const payload = {
+      ...Object.fromEntries(formData.entries()),
+      access_key: WEB3FORMS_ACCESS_KEY,
+      subject: `Portfolio message from ${name}`,
+      from_name: 'mannykurinaah.com',
+    }
+
     setStatus('submitting')
     try {
       const res = await fetch(ENDPOINT, {
         method: 'POST',
-        body: formData,
-        headers: { Accept: 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(payload),
       })
-      if (res.ok) {
+      const data = (await res.json()) as { success?: boolean }
+      if (data.success) {
         setStatus('success')
         form.reset()
       } else {
@@ -139,10 +161,10 @@ export function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="card p-6 sm:p-8" noValidate>
-                {/* Honeypot spam trap */}
+                {/* Honeypot spam trap — Web3Forms rejects the submission if checked */}
                 <input
-                  type="text"
-                  name="_gotcha"
+                  type="checkbox"
+                  name="botcheck"
                   tabIndex={-1}
                   autoComplete="off"
                   className="hidden"
