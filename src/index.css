@@ -67,9 +67,13 @@
   --color-accent-strong: var(--accent-strong);
   --color-accent-contrast: var(--accent-contrast);
 
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  /* Single-family type system: Space Grotesk everywhere, hierarchy via
+     weight/size/tracking. The three role vars are kept so existing
+     font-sans / font-heading / font-mono utilities keep working (and a
+     future re-split stays a three-line change). */
+  --font-sans: 'Space Grotesk', system-ui, sans-serif;
   --font-heading: 'Space Grotesk', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-mono: 'Space Grotesk', system-ui, sans-serif;
 
   /* Fluid type scale (scales between ~375px and ~1280px) */
   --text-fluid-hero: clamp(2.6rem, 1.2rem + 6.4vw, 6rem);
