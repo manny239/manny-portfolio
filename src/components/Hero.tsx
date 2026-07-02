@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ArrowUpRight, Download, MapPin } from 'lucide-react'
-import { contact } from '../data/resume'
+import { ArrowUpRight, Download, FileText, MapPin } from 'lucide-react'
+import { contact, publication } from '../data/resume'
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
 import { Button } from './ui/Button'
 import { Container } from './ui/Container'
@@ -136,8 +136,25 @@ export function Hero() {
             </div>
           </Reveal>
 
-          <Reveal delay={0.25}>
-            <div className="mt-10 flex items-center gap-4">
+          <Reveal delay={0.24}>
+            <a
+              href={publication.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-6 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3.5 py-1.5 text-sm text-accent transition-colors hover:bg-accent/15"
+            >
+              <FileText size={15} className="shrink-0" />
+              <span className="font-medium">Published at SPIE 2025</span>
+              <span className="hidden text-muted sm:inline">· first-author research paper</span>
+              <ArrowUpRight
+                size={14}
+                className="shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
+            </a>
+          </Reveal>
+
+          <Reveal delay={0.28}>
+            <div className="mt-8 flex items-center gap-4">
               <SocialLinks />
               <span className="hidden h-px w-10 bg-line-strong sm:block" />
               <span className="hidden items-center gap-1.5 text-sm text-faint sm:flex">
