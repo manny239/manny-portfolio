@@ -66,6 +66,23 @@ export interface QuickStat {
   label: string
 }
 
+export interface Publication {
+  title: string
+  /** Full venue line, e.g. proceedings + conference. */
+  venue: string
+  /** Compact venue label for pills, e.g. "SPIE 2025". */
+  venueShort: string
+  year: string
+  /** Author list, this person's name first. */
+  authors: string
+  /** This person's contribution, e.g. "First author". */
+  role: string
+  href: string
+  doi: string
+  /** Optional id of the related project. */
+  projectId?: string
+}
+
 export interface ExperienceItem {
   company: string
   role: string
@@ -93,6 +110,8 @@ export interface Project {
   year: string
   org?: string
   featured?: boolean
+  /** Optional accolade badge, e.g. "Published · SPIE 2025". */
+  award?: string
   tags: string[]
   highlights: string[]
   caseStudy: ProjectCaseStudy

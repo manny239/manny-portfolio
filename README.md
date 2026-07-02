@@ -37,8 +37,13 @@ The site is fully data-driven: edit `src/data/resume.ts` and everything updates.
 The form works out of the box by falling back to the visitor's email client.
 To deliver messages straight to your inbox instead:
 
-1. Create a free form at [formspree.io](https://formspree.io) targeting `emkurinaah@gmail.com`.
-2. Paste its form ID into `FORMSPREE_FORM_ID` near the top of `src/components/Contact.tsx`.
+1. Get a free access key at [web3forms.com](https://web3forms.com) (no account
+   needed) targeting `emkurinaah@gmail.com`.
+2. Paste it into `WEB3FORMS_ACCESS_KEY` near the top of `src/components/Contact.tsx`.
+
+Each submission is emailed to that address with **Reply-To set to the sender**,
+so replying in Gmail goes straight back to them. The access key is public by
+design; it only permits sending mail to your configured address.
 
 ## Adding a photo (optional)
 

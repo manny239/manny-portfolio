@@ -1,5 +1,13 @@
-import { Award, Check, Download, GraduationCap, MapPin } from 'lucide-react'
-import { certifications, contact, education, quickStats } from '../data/resume'
+import {
+  ArrowUpRight,
+  Award,
+  Check,
+  Download,
+  FileText,
+  GraduationCap,
+  MapPin,
+} from 'lucide-react'
+import { certifications, contact, education, publication, quickStats } from '../data/resume'
 import { Button } from './ui/Button'
 import { Container } from './ui/Container'
 import { Reveal } from './ui/Reveal'
@@ -19,6 +27,44 @@ export function About() {
             </>
           }
         />
+
+        {/* Featured publication — surfaced early for high visibility */}
+        <Reveal delay={0.05}>
+          <a
+            href={publication.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Read the SPIE paper: ${publication.title}`}
+            className="card glow-ring group mt-10 block overflow-hidden p-6 sm:p-7"
+          >
+            <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-6">
+              <span className="grid h-14 w-14 shrink-0 place-items-center rounded-xl border border-accent/30 bg-accent/10 text-accent">
+                <FileText size={26} />
+              </span>
+
+              <div className="min-w-0 flex-1">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="mono-label text-accent">Published Research</span>
+                  <span className="chip">{publication.role}</span>
+                  <span className="chip">Peer-reviewed · {publication.venueShort}</span>
+                </div>
+                <h3 className="mt-2.5 font-heading text-lg leading-snug text-ink transition-colors group-hover:text-accent sm:text-xl">
+                  {publication.title}
+                </h3>
+                <p className="mt-2 text-sm text-muted">{publication.venue}</p>
+                <p className="mt-1 text-xs text-faint">{publication.authors}</p>
+              </div>
+
+              <span className="inline-flex shrink-0 items-center gap-1.5 self-start rounded-lg border border-accent/30 bg-accent/10 px-4 py-2 text-sm font-medium text-accent transition-colors group-hover:bg-accent/15 sm:self-center">
+                Read the paper
+                <ArrowUpRight
+                  size={16}
+                  className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
+              </span>
+            </div>
+          </a>
+        </Reveal>
 
         <div className="mt-12 grid gap-10 lg:grid-cols-[1.55fr_1fr]">
           {/* Left: narrative + education + certs */}

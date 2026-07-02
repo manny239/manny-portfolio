@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ArrowUpRight, CircleCheck, Sparkles } from 'lucide-react'
+import { ArrowUpRight, Award, CircleCheck, ExternalLink, Sparkles } from 'lucide-react'
 import { projects } from '../data/resume'
 import type { Project } from '../types'
 import { Container } from './ui/Container'
@@ -35,7 +35,13 @@ function ProjectCard({
         </h3>
       </div>
 
-      <div className="mt-1 flex items-center gap-2">
+      <div className="mt-1 flex flex-wrap items-center gap-2">
+        {project.award && (
+          <span className="inline-flex items-center gap-1 rounded-full bg-accent px-2 py-0.5 text-[0.68rem] font-semibold text-accent-contrast">
+            <Award size={11} />
+            {project.award}
+          </span>
+        )}
         {project.org && <span className="text-sm text-faint">{project.org}</span>}
         {project.featured && (
           <span className="inline-flex items-center gap-1 rounded-full border border-accent/30 bg-accent/10 px-2 py-0.5 text-[0.68rem] font-medium text-accent">
@@ -116,6 +122,23 @@ function CaseStudy({ project }: { project: Project }) {
           ))}
         </ul>
       </div>
+
+      {project.links && project.links.length > 0 && (
+        <div className="mt-7 flex flex-wrap gap-3">
+          {project.links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg border border-accent/30 bg-accent/10 px-4 py-2 text-sm font-medium text-accent transition-colors hover:bg-accent/15"
+            >
+              <ExternalLink size={15} />
+              {link.label}
+            </a>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

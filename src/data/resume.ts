@@ -5,6 +5,7 @@ import type {
   ExperienceItem,
   NavLink,
   Project,
+  Publication,
   QuickStat,
   SkillCategory,
 } from '../types'
@@ -84,6 +85,20 @@ export const certifications: Certification[] = [
     abbr: 'LSS',
   },
 ]
+
+export const publication: Publication = {
+  title:
+    'Real-time parking lot monitoring for smart cities: a CNN-based approach using YOLO and RTSP-compatible cameras',
+  venue:
+    'SPIE Defense + Commercial Sensing 2025 · Three-Dimensional Imaging, Visualization, and Display (Proc. SPIE Vol. 13465)',
+  venueShort: 'SPIE 2025',
+  year: '2025',
+  authors: 'E. Kurinaah, M. Hall, N. Viera, K. Smith, Y. Yu, X. Shen',
+  role: 'First author',
+  href: 'https://www.spiedigitallibrary.org/conference-proceedings-of-spie/13465/134651I/Real-time-parking-lot-monitoring-for-smart-cities--a/10.1117/12.3058674.short',
+  doi: '10.1117/12.3058674',
+  projectId: 'parking-monitor',
+}
 
 export const quickStats: QuickStat[] = [
   { value: '34K+', label: 'Employees served by platforms I build' },
@@ -297,26 +312,34 @@ export const projects: Project[] = [
     id: 'parking-monitor',
     title: 'Automated Parking Monitoring System',
     blurb:
-      'A computer-vision parking monitor that fuses live camera feeds with Arduino sensing and a real-time React occupancy dashboard.',
+      'A computer-vision parking monitor that fuses live RTSP camera feeds with YOLO detection and a real-time React occupancy dashboard. Published and presented at SPIE 2025.',
     category: 'Computer Vision · IoT',
     year: '2024',
     featured: true,
-    tags: ['Computer Vision', 'Arduino', 'React', 'Image Annotation', 'IoT'],
+    award: 'Published · SPIE 2025',
+    tags: ['Computer Vision', 'YOLO', 'React', 'Image Annotation', 'IoT'],
     highlights: [
-      'Live camera feeds + Arduino for real-time parking-space monitoring',
+      'Live RTSP camera feeds + YOLO CNN detection on a Raspberry Pi 5',
       '1,000+ annotated images across conditions for model tuning',
-      'React dashboard showing real-time lot occupancy',
+      'First-author paper published at SPIE Defense + Commercial Sensing 2025',
+    ],
+    links: [
+      {
+        label: 'Read the paper · SPIE',
+        href: 'https://www.spiedigitallibrary.org/conference-proceedings-of-spie/13465/134651I/Real-time-parking-lot-monitoring-for-smart-cities--a/10.1117/12.3058674.short',
+      },
     ],
     caseStudy: {
       problem:
         'Finding open parking is slow and frustrating, and most lots offer no real-time occupancy data.',
       approach: [
-        'Integrated a live camera feed with an Arduino to sense and monitor parking-space occupancy.',
-        'Captured and annotated 1,000+ images of the lot under varied lighting and weather to tune the image model.',
+        'Integrated RTSP-compatible cameras with a Raspberry Pi 5 to stream and sense parking-space occupancy in real time.',
+        'Captured and annotated 1,000+ images of the lot under varied lighting and weather to train and tune a YOLO CNN detector.',
         'Built a React application that displays real-time parking-lot occupancy.',
       ],
       impact: [
         'Delivered an end-to-end system spanning hardware sensing, a tuned vision model, and a live web dashboard.',
+        'First-authored the research paper, presenting and publishing it at SPIE Defense + Commercial Sensing 2025 (Proc. SPIE Vol. 13465).',
         'Turned a noisy, real-world environment into actionable, real-time occupancy data.',
       ],
     },
